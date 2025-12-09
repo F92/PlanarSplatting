@@ -109,7 +109,8 @@ class SceneDatasetDemo:
         assert mono_normals.shape[2] == img_res[1]
         mono_normals = mono_normals.reshape(self.n_images, -1, 3)  # n, hw, 3
 
-
+        print(img_res[0])
+        print(img_res[1])
         mesh = refuse_mesh(
             [x.cpu().squeeze().reshape(img_res[0], img_res[1]).numpy() for x in mono_depths],
             [x.cpu().numpy() for x in self.poses_all],

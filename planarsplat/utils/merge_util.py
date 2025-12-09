@@ -74,7 +74,7 @@ def merge_plane(
     else:
         pts_updated = pts_original.clone()
     
-    '''
+
     plane_ins_id_new = get_planeInsId_from_ptsInsAssignment(plane_normal.shape[0], pts_ins_assignment_original, pts_ins_assignment_masked_NG)
     plot_rectangle_planes(
         plane_center, 
@@ -87,7 +87,7 @@ def merge_plane(
         out_path=net.planarSplat.plot_dir, 
         plane_id=plane_ins_id_new, 
         color_type='prim')
-    '''
+
 
     ## check cc
     pts_ins_assignment_masked_NG_cc = torch.zeros_like(pts_ins_assignment_masked_NG)
@@ -337,7 +337,7 @@ def merge_fc_plane(
     dist_mask_nxn = dist_mask_nxn | dist_mask_nxn.t()
 
     # calculate overlap mask
-    adj_mask_nxn = calculate_adj_mask(pts_list, adj_ratio_threshold=0, adj_count_threshold=1, voxel_size=0.02)
+    adj_mask_nxn = calculate_adj_mask(pts_list, adj_ratio_threshold=0.2, adj_count_threshold=15, voxel_size=0.02)
     adj_mask_nxn = adj_mask_nxn | adj_mask_nxn.t()
 
     adj_mask_nxn_fc = calculate_adj_mask(pts_list, fc_adj_ratio_threshold, fc_adj_count_threshold, fc_voxel_size)
